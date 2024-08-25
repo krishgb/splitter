@@ -2,6 +2,11 @@
 
 ### Goal - To split files in desired size.
 
+### Build
+```bash
+zig build
+```
+
 ### Usage:
 - To split files
 ```bash
