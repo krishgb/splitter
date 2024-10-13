@@ -1,6 +1,7 @@
 const std = @import("std");
 const Split = @import("split.zig");
 const Join = @import("join.zig");
+const Size = @import("size.zig");
 
 pub const Command = enum { split, join };
 
@@ -23,16 +24,11 @@ pub const ArgsParser = struct {
         else
             return error.InvalidOperationArgument;
 
-        const size = std.fmt.parseUnsigned(u64, args[4], 10) catch {
-            switch (command) {
-                .split => {
-                    return error.InvalidSize;
-                },
-                .join => {
-                    return error.InvalidParts;
-                },
-            }
+        const size = switch (command) {
+            .split => try Size.size(args[4]),
+            .join => std.fmt.parseUnsigned(u64, args[4], 10) catch return error.InvalidParts,
         };
+
         return ArgsParser{ .command = command, .input_path = args[2], .output_path = args[3], .size = size };
     }
 

@@ -1,6 +1,4 @@
-# Splitter
-
-### Goal - To split files in desired size.
+# Splitter - similar to split tool
 
 ### Build
 ```bash
@@ -19,6 +17,3 @@ splitter -j [parts_name] [output_file_name] [parts]
 ```
 
 ---
-I created it to store my data in Telegram.
-
-But [Pavel Durov](https://x.com/durov) got arrested yesterday.
